@@ -277,5 +277,5 @@ Built entirely on free public data. No Bloomberg terminal. No proprietary feeds.
 
 ---
 
-*Project by [Your Name] | Data Analyst Portfolio | 2025*
+*Project by [Hrishikesh Nair] | Data Analyst Portfolio | 2026*
 *Data source: SEC EDGAR (public domain) | All analysis for educational purposes only*
