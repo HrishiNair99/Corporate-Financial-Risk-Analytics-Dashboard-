@@ -18,7 +18,7 @@ This project asks a simple question: **what if you had been watching the filings
 
 Using only publicly available SEC data, this model flagged Yellow Corporation as critically distressed in 2021 - **two full years before the bankruptcy filing**. The Altman Z-Score, the most widely cited academic bankruptcy predictor, stayed in its "Grey Zone" the entire time and never once triggered a danger signal.
 
-That gap - between what the filings showed and what the models said - is what this project is built to close.
+That gap between what the filings showed and what the models said - is what this project is built to close.
 
 ---
 
