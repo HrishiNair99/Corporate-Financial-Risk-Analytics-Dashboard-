@@ -6,25 +6,25 @@
 
 ## The Story That Started This Project
 
-In August 2023, Yellow Corporation — one of America's largest trucking companies — filed for Chapter 11 bankruptcy, wiping out thousands of jobs and billions in shareholder value.
+In August 2023, Yellow Corporation - one of America's largest trucking companies - filed for Chapter 11 bankruptcy, wiping out thousands of jobs and billions in shareholder value.
 
 Credit rating agencies were late. Market analysts were late. The headlines were a surprise.
 
 **The public filings were not.**
 
-Yellow's SEC EDGAR 10-K filings told a different story — one of chronically collapsing risk scores, four consecutive years below the danger threshold, and a deterioration velocity that had been accelerating since 2019.
+Yellow's SEC EDGAR 10-K filings told a different story - one of chronically collapsing risk scores, four consecutive years below the danger threshold, and a deterioration velocity that had been accelerating since 2019.
 
 This project asks a simple question: **what if you had been watching the filings?**
 
-Using only publicly available SEC data, this model flagged Yellow Corporation as critically distressed in 2021 — **two full years before the bankruptcy filing**. The Altman Z-Score, the most widely cited academic bankruptcy predictor, stayed in its "Grey Zone" the entire time and never once triggered a danger signal.
+Using only publicly available SEC data, this model flagged Yellow Corporation as critically distressed in 2021 - **two full years before the bankruptcy filing**. The Altman Z-Score, the most widely cited academic bankruptcy predictor, stayed in its "Grey Zone" the entire time and never once triggered a danger signal.
 
-That gap — between what the filings showed and what the models said — is what this project is built to close.
+That gap - between what the filings showed and what the models said - is what this project is built to close.
 
 ---
 
 ## What This Project Does
 
-This system ingests 5 years of financial data from SEC EDGAR for 30 public companies across three sectors — Retail, Healthcare, and Supply Chain — and produces a composite credit risk score for each company, each year.
+This system ingests 5 years of financial data from SEC EDGAR for 30 public companies across three sectors - Retail, Healthcare, and Supply Chain - and produces a composite credit risk score for each company, each year.
 
 It then tracks how that score changes over time, flags companies showing sustained deterioration, and validates its findings against the Altman Z-Score academic baseline.
 
@@ -35,12 +35,12 @@ The output is a four-page Power BI dashboard that lets an analyst or investor mo
 ## Key Findings
 
 **Healthcare is the most distressed sector.**
-Average composite risk score of 60.83 — nearly 16 points below Retail (76.64) and Supply Chain (72.87). Driven by sustained debt load increases at Humana, Elevance Health, and Medtronic.
+Average composite risk score of 60.83 - nearly 16 points below Retail (76.64) and Supply Chain (72.87). Driven by sustained debt load increases at Humana, Elevance Health, and Medtronic.
 
-**Your model catches what Altman misses — and explains why.**
+**Your model catches what Altman misses - and explains why.**
 Of 30 companies, both models agree on 16. The 14 divergences are analytically meaningful:
-- Kroger and McKesson are flagged High Deterioration by this model but Safe by Altman — because Altman's heavy asset turnover weighting rewards high-revenue distributors regardless of margin compression
-- AbbVie is flagged Distress by Altman but Stable here — because aggressive share buybacks destroy book equity without impairing cash flow, a known Altman weakness
+- Kroger and McKesson are flagged High Deterioration by this model but Safe by Altman - because Altman's heavy asset turnover weighting rewards high-revenue distributors regardless of margin compression
+- AbbVie is flagged Distress by Altman but Stable here - because aggressive share buybacks destroy book equity without impairing cash flow, a known Altman weakness
 
 **The YELL backtest validates the model's predictive signal.**
 
@@ -51,7 +51,7 @@ Of 30 companies, both models agree on 16. The 14 divergences are analytically me
 | 2020 | 12.7 | 1.94 | Stable |
 | 2021 | 8.2 | 1.93 | **High Deterioration** |
 | 2022 | 23.5 | 2.31 | **High Deterioration** |
-| 2023 | — | — | **Chapter 11 filed** |
+| 2023 | - | - | **Chapter 11 filed** |
 
 This model flagged Critical in 2021. Altman never left Grey Zone.
 
@@ -87,7 +87,7 @@ Three conditions trigger a **High Deterioration** flag:
 
 A **Moderate Deterioration** flag triggers on two consecutive declining years.
 
-This logic correctly flagged Yellow Corporation in 2021 via condition 3 — chronic low score streak — even during a year when its score partially recovered from the prior year's trough.
+This logic correctly flagged Yellow Corporation in 2021 via condition 3 - chronic low score streak - even during a year when its score partially recovered from the prior year's trough.
 
 ---
 
@@ -110,13 +110,13 @@ Thresholds: Z > 2.99 Safe | 1.81–2.99 Grey Zone | Z < 1.81 Distress
 Agreement classification:
 - This model Risk = High Deterioration OR Moderate Deterioration
 - Altman Risk = Distress Zone
-- Grey Zone treated as ambiguous — not forced into agreement or disagreement
+- Grey Zone treated as ambiguous - not forced into agreement or disagreement
 
 **Results (latest year, 30 companies):**
 - Both flag safe: 8
 - Both flag risk: 2
-- Grey Zone — leans risk: 3
-- Grey Zone — leans safe: 7
+- Grey Zone - leans risk: 3
+- Grey Zone - leans safe: 7
 - Your model flags risk, Altman doesn't: 4
 - Altman flags risk, yours doesn't: 2 (ABBVIE buyback effect, NSC derailment liabilities)
 
@@ -170,33 +170,33 @@ All fact tables reference `company_master` and `dim_year` via foreign keys. Inde
 
 ---
 
-## Power BI Dashboard — 4 Pages
+## Power BI Dashboard - 4 Pages
 
-**Page 1 — Portfolio Overview**
+**Page 1 - Portfolio Overview**
 RAG-coded leaderboard of all 30 companies. KPI cards for High Risk / Watch / Stable counts. Sector average comparison.
 
-**Page 2 — Company Deep Dive**
+**Page 2 - Company Deep Dive**
 Per-company trend analysis. Composite score trajectory with danger threshold. Altman Z trend. Raw ratio trends. Dynamic risk commentary generated from DAX. Drill-down via company name slicer.
 
-**Page 3 — Watch List & Validation**
+**Page 3 - Watch List & Validation**
 Filtered view of High Risk and Moderate Deterioration companies only. YELL backtest dual-axis chart with bankruptcy annotation. Model agreement breakdown. Analytical narrative explaining key divergences.
 
-**Page 4 — Sector Comparison**
+**Page 4 - Sector Comparison**
 Radar chart comparing all 3 sectors across 5 ratio dimensions. Score trend over time by sector. Risk flag distribution by sector.
 
 ---
 
 ## Data Sources and Limitations
 
-**Source:** SEC EDGAR XBRL API (`/api/xbrl/companyfacts`) — 100% free, no API key required.
+**Source:** SEC EDGAR XBRL API (`/api/xbrl/companyfacts`) - 100% free, no API key required.
 
 **Coverage period:** Primarily FY2021–FY2025. Yellow Corporation data ends FY2022 (pre-bankruptcy).
 
 **Known limitations:**
-- Interest coverage missing for companies with zero debt — handled via weight rebalancing (missing metric dropped from denominator, not zeroed)
+- Interest coverage missing for companies with zero debt - handled via weight rebalancing (missing metric dropped from denominator, not zeroed)
 - Working capital approximated as Total Assets minus Total Liabilities (current assets not separately extracted)
 - Retained earnings approximated via net income (retained earnings not consistently reported in XBRL)
-- Altman Z uses book value variant — no market cap data incorporated
+- Altman Z uses book value variant - no market cap data incorporated
 - Healthcare sector skewed by AbbVie's buyback-driven negative book equity
 
 ---
@@ -269,7 +269,7 @@ python src/09_load_altman_validation.py
 
 ## The Bottom Line
 
-Credit rating agencies are reactive by design. They rate based on what has already happened. This model is built to be proactive — tracking the trajectory of deterioration before it becomes a headline.
+Credit rating agencies are reactive by design. They rate based on what has already happened. This model is built to be proactive - tracking the trajectory of deterioration before it becomes a headline.
 
 Built entirely on free public data. No Bloomberg terminal. No proprietary feeds. Just the filings that every public company is already required to submit.
 
