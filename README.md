@@ -6,13 +6,13 @@
 
 ## The Story That Started This Project
 
-In August 2023, Yellow Corporation - one of America's largest trucking companies - filed for Chapter 11 bankruptcy, wiping out thousands of jobs and billions in shareholder value.
+In August 2023, Yellow Corporation, one of America's largest trucking companies, filed for Chapter 11 bankruptcy, wiping out thousands of jobs and billions in shareholder value.
 
 Credit rating agencies were late. Market analysts were late. The headlines were a surprise.
 
 **The public filings were not.**
 
-Yellow's SEC EDGAR 10-K filings told a different story - one of chronically collapsing risk scores, four consecutive years below the danger threshold, and a deterioration velocity that had been accelerating since 2019.
+Yellow's SEC EDGAR 10-K filings told a different story, one of chronically collapsing risk scores, four consecutive years below the danger threshold, and a deterioration velocity that had been accelerating since 2019.
 
 This project asks a simple question: **what if you had been watching the filings?**
 
